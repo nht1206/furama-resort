@@ -1,0 +1,132 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #0779e4;
+}
+
+a:hover {
+  color: #4cbbb9;
+}
+
+.banner {
+  margin: 0;
+  height: 110px;
+  background-color: #323232;
+}
+
+.banner .logo {
+  margin: 30px;
+  float: left;
+  width: 15%;
+}
+
+.banner .user-form {
+  float: right;
+}
+
+.banner .user-form a {
+  display: inline-block;
+  padding: 10px;
+  margin: 10px;
+  background-color: #40bad5;
+  color: aliceblue;
+  border-radius: 40px;
+}
+
+.nav-bar {
+  margin: 5px;
+}
+
+.nav-bar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #1b262c;
+  text-align: center;
+}
+
+.nav-bar ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+.nav-bar ul li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-bar ul li a:hover {
+  background-color: #323232;
+}
+
+.body:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.body {
+  height: 550px;
+}
+
+.section {
+  width: 20%;
+  float: left;
+}
+
+.section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+
+.section ul li a {
+  display: block;
+  padding: 8px;
+  width: calc(100% - 16px);
+}
+
+.section ul li a:hover {
+  background-color: #323232;
+}
+
+.content {
+  float: left;
+  width: 60%;
+}
+
+.content-top {
+  height: 70%;
+}
+
+.content-bottom {
+  height: 30%;
+}
+
+.left-nav {
+  float: left;
+  width: 20%;
+}
+
+.feature {
+  height: 70%;
+}
+
+.external-link {
+  height: 30%;
+}
+
+footer {
+  height: 100px;
+  background-color: #323232;
+}
+
+
