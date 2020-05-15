@@ -10,7 +10,7 @@
         th:replace="admin/fragments/side-bar.html :: side-bar(current = 'customer')"
       ></nav>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <form th:replace="admin/fragments/form.html :: customer-form(action = 'update')"></form>
+        <form th:replace="admin/fragments/customer/form.html :: customer-form(action = 'update')"></form>
       </main>
     </div>
     <th:block th:replace="admin/fragments/head.html :: js"> </th:block>

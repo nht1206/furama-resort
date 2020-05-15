@@ -29,7 +29,7 @@ public class Employee {
     @Column(name = "full_name")
     private String fullName;
     @Column(name = "date_of_birth")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     @Column(name = "identity_card_number")
     @IdentityCard
