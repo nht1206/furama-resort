@@ -30,6 +30,7 @@ public class Employee {
     private String fullName;
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Column(name = "identity_card_number")
     @IdentityCard
