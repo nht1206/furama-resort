@@ -37,7 +37,7 @@ public class Customer {
     @Column(name = "date_of_birth")
     @NotNull(message = "Date of birth is required")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
     @Column(name = "gender")
     @NotBlank(message = "Gender is required")
