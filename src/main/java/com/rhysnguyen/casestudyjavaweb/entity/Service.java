@@ -5,6 +5,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+
+import com.rhysnguyen.validation.ResortCode;
+
 import java.util.Set;
 
 @Entity
@@ -14,18 +18,22 @@ import java.util.Set;
 @NoArgsConstructor
 public class Service {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Column(name = "service_id")
+    @ResortCode(regex = "^DV-[0-9]{4}$", message = "{service.id.valid}")
+    private Long serviceId;
     @Column(name = "name")
     private String name;
     @Column(name = "area")
+    @Min(value = 0, message = "{service.area.positive}")
     private Float area;
     @Column(name = "rent_fee")
+    @Min(value = 0, message = "The rent fee should be greater than 0.")
     private Double rentFee;
     @Column(name = "number_od_floors")
+    @Min(value = 1, message = "The number of floors should be greater than 0.")
     private Integer numberOfFloors;
     @Column(name = "max_number_of_people")
+    @Min(value = 1, message = "The max number of people should be greater than 0.")
     private Integer maxNumberOfPeople;
     @Column(name = "status")
     private String status;
@@ -43,7 +51,8 @@ public class Service {
     )
     @JoinColumn(name = "rent_type_id")
     private RentType rentType;
-    @OneToMany(fetch = FetchType.LAZY,
+    @OneToMany(
+            fetch = FetchType.LAZY,
             mappedBy = "service",
             cascade = CascadeType.ALL
     )

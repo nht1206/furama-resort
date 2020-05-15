@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 
 @Entity
 @Table(name = "contract_detail")
@@ -30,5 +31,6 @@ public class ContractDetail {
     @JoinColumn(name = "secondary_service_id")
     private SecondaryServices secondaryServices;
     @Column(name = "quantity")
+    @Min(value = 0, message = "The quantity of the secondary service must be greater than 0.")
     private Integer quantity;
 }

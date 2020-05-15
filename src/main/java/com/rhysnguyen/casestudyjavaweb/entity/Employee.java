@@ -5,6 +5,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+
+import com.rhysnguyen.validation.IdentityCard;
+import com.rhysnguyen.validation.PhoneNumber;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.sql.Date;
 import java.util.Set;
 
@@ -21,15 +29,20 @@ public class Employee {
     @Column(name = "full_name")
     private String fullName;
     @Column(name = "date_of_birth")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date dateOfBirth;
     @Column(name = "identity_card_number")
+    @IdentityCard
     private String identityCardNumber;
     @Column(name = "contact_number")
+    @PhoneNumber
     private String contactNumber;
+    @Email(message = "Email is not a valid")
     @Column(name = "email")
     private String email;
     @Column(name = "address")
     private String address;
+    @Min(value = 0 , message = "Wages should be greater than 0.")
     @Column(name = "wages")
     private Double wages;
     @ManyToOne(targetEntity = Degree.class,

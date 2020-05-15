@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+
 import java.util.Set;
 
 @Entity
@@ -20,6 +22,7 @@ public class SecondaryServices {
     @Column(name = "name")
     private String name;
     @Column(name = "price")
+    @Min(value = 0, message = "The price must be greater than 0.")
     private Double price;
     @Column(name = "unit")
     private int unit;

@@ -7,15 +7,15 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "loai_dich_vu")
+@Table(name = "service_type")
 @Setter
 @Getter
 @NoArgsConstructor
 public class ServiceType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_loai_dich_vu")
+    @Column(name = "service_type_id")
     private Long id;
-    @Column(name = "ten_loai_dich_vu")
+    @Column(name = "service_type_name")
     private String name;
 }

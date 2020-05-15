@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin home page</title>
-    <link rel="stylesheet" href="/css/AdminStyle.css">
+
+<head th:replace="admin/fragments/head.html :: head(title='Dashboard')">
 </head>
 <body>
-    <p>Admin</p>
+    <nav th:replace="admin/fragments/nav-bar.html :: nav-bar(page = 'dashboard')"></nav>
+    <div class="container-fluid">
+        <nav th:replace="admin/fragments/side-bar.html :: side-bar(current = 'home')">
+        </nav>
+    </div>
+    <th:block th:replace="admin/fragments/head.html :: js">
+    </th:block>
 </body>
+
 </html>

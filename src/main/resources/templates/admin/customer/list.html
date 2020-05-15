@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+  <head th:replace="admin/fragments/head.html :: head(title='List customer')">
+  </head>
+
+  <body>
+    <nav th:replace="admin/fragments/nav-bar.html :: nav-bar(page = 'customer')"></nav>
+    <div class="container-fluid">
+      <nav
+        th:replace="admin/fragments/side-bar.html :: side-bar(current = 'customer')"
+      ></nav>
+      <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+        <br>
+        <a href="/admin/customer/create" class="btn btn-sm btn-outline-secondary">Create Customer</a>
+        <hr>
+        <h2>List customer</h2>
+        <div class="table-responsive">
+          <table class="table table-striped table-sm">
+            <thead>
+              <tr>
+                <th>#Id</th>
+                <th>Full Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>Identity Card Number</th>
+                <th>Contact Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="customer : ${customers}">
+                <td th:text="${customer.customerId}"></td>
+                <td th:text="${customer.fullName}"></td>
+                <td th:text="${customer.dateOfBirth}"></td>
+                <td th:text="${customer.gender}"></td>
+                <td th:text="${customer.identityCardNumber}"></td>
+                <td th:text="${customer.contactNumber}"></td>
+                <td th:text="${customer.email}"></td>
+                <td th:text="${customer.Address}"></td>
+                <td>
+                    <a th:href="@{/admin/customer/edit/__${customer.customerId}__}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                    <a onclick="return confirm('Are you sure you want to delete this customer?')"th:href="@{/admin/customer/delete/__${customer.customerId}__}" class="btn btn-sm btn-outline-secondary">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </main>
+    </div>
+    <th:block th:replace="admin/fragments/head.html :: js"> </th:block>
+  </body>
+</html>

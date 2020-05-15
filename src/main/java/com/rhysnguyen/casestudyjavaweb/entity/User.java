@@ -36,8 +36,8 @@ public class User {
 
 
     public List<GrantedAuthority> getGrantedAuthorities() {
-        List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-        for (Role role : roles) {
+        final List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        for (final Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
         return authorities;
