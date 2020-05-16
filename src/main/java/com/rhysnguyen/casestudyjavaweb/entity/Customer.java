@@ -9,9 +9,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.rhysnguyen.validation.IdentityCard;
-import com.rhysnguyen.validation.PhoneNumber;
-import com.rhysnguyen.validation.ResortCode;
+import com.rhysnguyen.casestudyjavaweb.validation.IdentityCard;
+import com.rhysnguyen.casestudyjavaweb.validation.PhoneNumber;
+import com.rhysnguyen.casestudyjavaweb.validation.ResortCode;
 
 import org.springframework.format.annotation.DateTimeFormat;
 

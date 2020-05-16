@@ -1,4 +1,4 @@
-package com.rhysnguyen.validation;
+package com.rhysnguyen.casestudyjavaweb.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;

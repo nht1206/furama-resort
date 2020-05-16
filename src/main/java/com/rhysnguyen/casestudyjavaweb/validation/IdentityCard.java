@@ -1,4 +1,4 @@
-package com.rhysnguyen.validation;
+package com.rhysnguyen.casestudyjavaweb.validation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -10,11 +10,11 @@ import javax.validation.Constraint;
 import javax.validation.Payload;
 
 @Documented
-@Target({ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR})
+@Target({ElementType.FIELD, ElementType.METHOD, ElementType.CONSTRUCTOR})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy =  PhoneNumberValidator.class)
-public @interface PhoneNumber {
-    public String message() default "Phone number is not valid.";
+@Constraint(validatedBy = IdentityCardValidator.class)
+public @interface IdentityCard {
+    String message() default "Your identify card number is not valid.";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
 }

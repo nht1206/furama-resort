@@ -8,8 +8,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
 
-import com.rhysnguyen.validation.IdentityCard;
-import com.rhysnguyen.validation.PhoneNumber;
+import com.rhysnguyen.casestudyjavaweb.validation.IdentityCard;
+import com.rhysnguyen.casestudyjavaweb.validation.PhoneNumber;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
