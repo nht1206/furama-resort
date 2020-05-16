@@ -41,7 +41,9 @@
                 <td th:text="${customer.Address}"></td>
                 <td>
                     <a th:href="@{/admin/customer/edit/__${customer.customerId}__}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                    <a onclick="return confirm('Are you sure you want to delete this customer?')"th:href="@{/admin/customer/delete/__${customer.customerId}__}" class="btn btn-sm btn-outline-secondary">Delete</a>
+                    <a onclick="return confirm('Are you sure you want to delete this customer?')"
+                       th:href="@{/admin/customer/delete/__${customer.customerId}__}"
+                       class="btn btn-sm btn-outline-secondary">Delete</a>
                 </td>
               </tr>
             </tbody>

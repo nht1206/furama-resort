@@ -3,9 +3,11 @@ package com.rhysnguyen.casestudyjavaweb.service;
 import com.rhysnguyen.casestudyjavaweb.dao.DepartmentRepository;
 import com.rhysnguyen.casestudyjavaweb.entity.Department;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class DepartmentServiceImpl implements DepartmentService {
     DepartmentRepository departmentRepository;
 

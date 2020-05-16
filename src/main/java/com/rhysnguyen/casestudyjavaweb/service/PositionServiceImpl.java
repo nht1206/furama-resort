@@ -3,9 +3,11 @@ package com.rhysnguyen.casestudyjavaweb.service;
 import com.rhysnguyen.casestudyjavaweb.dao.PositionRepository;
 import com.rhysnguyen.casestudyjavaweb.entity.Position;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class PositionServiceImpl implements PositionService {
     PositionRepository positionRepository;
 

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+</head>
+<body>
+<h2>Create employee</h2>
+<form th:fragment="employee-form(action)"
+      th:action="@{/admin/employee/} + ${action}"
+      method="post"
+      class="col-md-6"
+      th:object="${employee}"
+>
+    <div class="form-group">
+        <label for="id">Employee Id</label>
+        <input
+                th:field="*{id}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('id')} ? 'is-invalid' : ''"
+                th:readonly="${action == 'update'}"
+                id="id"
+        />
+        <div
+                th:if="${#fields.hasErrors('id')}"
+                th:errors="*{id}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="fullName">Full name</label>
+        <input
+                th:field="*{fullName}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('fullName')} ? 'is-invalid' : ''"
+                id="fullName"
+        />
+        <div
+                th:if="${#fields.hasErrors('fullName')}"
+                th:errors="*{fullName}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="dateOfBirth">Date of birth</label>
+        <input
+                th:field="*{dateOfBirth}"
+                type="date"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'is-invalid' : ''"
+                id="dateOfBirth"
+        />
+        <div
+                th:if="${#fields.hasErrors('dateOfBirth')}"
+                th:errors="*{dateOfBirth}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="mail">Email</label>
+        <input
+                th:field="*{email}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('email')} ? 'is-invalid' : ''"
+                id="mail"
+        />
+        <div
+                th:if="${#fields.hasErrors('email')}"
+                th:errors="*{email}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+
+    <div class="form-group">
+        <label for="identityCardNumber">Identity card number</label>
+        <input
+                th:field="*{identityCardNumber}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('identityCardNumber')} ? 'is-invalid' : ''"
+                id="identityCardNumber"
+        />
+        <div
+                th:if="${#fields.hasErrors('identityCardNumber')}"
+                th:errors="*{identityCardNumber}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="contactNumber">Contact number</label>
+        <input
+                th:field="*{contactNumber}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('contactNumber')} ? 'is-invalid' : ''"
+                id="contactNumber"
+        />
+        <div
+                th:if="${#fields.hasErrors('contactNumber')}"
+                th:errors="*{contactNumber}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input
+                th:field="*{address}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('address')} ? 'is-invalid' : ''"
+                id="address"
+        />
+        <div
+                th:if="${#fields.hasErrors('address')}"
+                th:errors="*{address}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="address">Wages</label>
+        <input
+                th:field="*{wages}"
+                type="text"
+                class="form-control"
+                th:classappend="${#fields.hasErrors('wages')} ? 'is-invalid' : ''"
+                id="wages"
+        />
+        <div
+                th:if="${#fields.hasErrors('wages')}"
+                th:errors="*{wages}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+
+    <div class="form-group">
+        <label for="degreeSelect">Degree</label>
+        <select
+                th:field="*{degree}"
+                class="custom-select"
+                th:classappend="${#fields.hasErrors('degree')} ? 'is-invalid' : ''"
+                id="degreeSelect"
+                required
+        >
+            <option
+                    th:each="degree : ${degreeList}"
+                    th:value="${degree.id}"
+                    th:text="${degree.name}"
+            ></option>
+        </select>
+        <div
+                th:if="${#fields.hasErrors('degree')}"
+                th:errors="*{degree}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="positionSelect">Position</label>
+        <select
+                th:field="*{position}"
+                class="custom-select"
+                th:classappend="${#fields.hasErrors('position')} ? 'is-invalid' : ''"
+                id="positionSelect"
+                required
+        >
+            <option
+                    th:each="position : ${positionList}"
+                    th:value="${position.id}"
+                    th:text="${position.name}"
+            ></option>
+        </select>
+        <div
+                th:if="${#fields.hasErrors('position')}"
+                th:errors="*{position}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <div class="form-group">
+        <label for="departmentSelect">Department</label>
+        <select
+                th:field="*{department}"
+                class="custom-select"
+                th:classappend="${#fields.hasErrors('department')} ? 'is-invalid' : ''"
+                id="departmentSelect"
+                required
+        >
+            <option
+                    th:each="department : ${departmentList}"
+                    th:value="${department.id}"
+                    th:text="${department.name}"
+            ></option>
+        </select>
+        <div
+                th:if="${#fields.hasErrors('department')}"
+                th:errors="*{department}"
+                class="invalid-feedback"
+        ></div>
+    </div>
+    <button class="btn btn-primary" type="submit" th:text="${action == 'create'} ? 'Create' : 'Update'"></button>
+</form>
+</body>
+</html>
