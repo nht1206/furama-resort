@@ -104,7 +104,9 @@ public class EmployeeController {
     }
 
     @PostMapping(value="/employee/update")
-    public String processEditEmployee(@ModelAttribute("customer") Employee employee) {
+    public String processEditEmployee(@ModelAttribute("employee") @Valid Employee employee, BindingResult result) {
+        if (result.hasFieldErrors())
+            return "admin/employee/edit";
         employeeService.save(employee);
         return "redirect:/admin/employees";
 

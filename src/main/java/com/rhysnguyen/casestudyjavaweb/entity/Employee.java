@@ -7,6 +7,8 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.rhysnguyen.casestudyjavaweb.validation.IdentityCard;
 import com.rhysnguyen.casestudyjavaweb.validation.PhoneNumber;
@@ -25,26 +27,41 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @NotNull(message = "{Employee.id.NotNull}")
     private Long id;
+
     @Column(name = "full_name")
+    @NotBlank(message = "{Employee.fullName.NotBlank}")
     private String fullName;
+
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Temporal(TemporalType.DATE)
+    @NotNull(message = "{Employee.dateOfBirth.NotNull}")
     private Date dateOfBirth;
+
     @Column(name = "identity_card_number")
-    @IdentityCard
+    @IdentityCard(message = "{Employee.identityCardNumber.NotBlank}")
+    @NotBlank
     private String identityCardNumber;
+
     @Column(name = "contact_number")
     @PhoneNumber
+    @NotBlank(message = "{Employee.contactNumber.NotBlank}")
     private String contactNumber;
-    @Email(message = "Email is not a valid")
+
+    @Email(message = "{Employee.email.Valid}")
     @Column(name = "email")
+    @NotBlank(message = "{Employee.email.NotBlank}")
     private String email;
+
     @Column(name = "address")
+    @NotBlank(message = "{Employee.address.NotBlank}")
     private String address;
+
     @Min(value = 0 , message = "Wages should be greater than 0.")
     @Column(name = "wages")
+    @NotNull(message = "{Employee.wages.NotNull}")
     private Double wages;
     @ManyToOne(targetEntity = Degree.class,
             fetch = FetchType.EAGER,
