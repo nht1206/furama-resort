@@ -54,7 +54,7 @@ public class CustomerController {
     @GetMapping(value = "/customers")
     public String getListCustomer(final Model model, HttpServletRequest request) {
         int page = 0;
-        int size = 1;
+        int size = 10;
         
         if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
             if (Integer.parseInt(request.getParameter("page")) < 1) {

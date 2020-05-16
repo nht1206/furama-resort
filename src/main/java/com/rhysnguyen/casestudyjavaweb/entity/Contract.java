@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -23,10 +23,12 @@ public class Contract {
     @Column(name = "id")
     private Long id;
     @Column(name = "created_on")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date createdOn;
     @Column(name = "ended_on")
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @Temporal(TemporalType.DATE)
     private Date endedOn;
     @Column(name = "deposit")
     @Min(value = 0, message = "Deposit amount must be greater than 0.")
