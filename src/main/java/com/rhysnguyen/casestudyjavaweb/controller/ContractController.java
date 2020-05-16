@@ -20,11 +20,12 @@ public class ContractController {
      * @param contractService the contractService to set
      */
     @Autowired
-    public void setContractService(ContractService contractService) {
+    public void setContractService(final ContractService contractService) {
         this.contractService = contractService;
     }
-    @GetMapping(value="contracts")
-    public String getAllContracts(Model model, HttpServletRequest request) {
+
+    @GetMapping(value = "contracts")
+    public String getAllContracts(final Model model, final HttpServletRequest request) {
         int page = 0;
         int size = 10;
         

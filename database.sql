@@ -1,11 +1,11 @@
-create database casestudy_java_web;
-use casestudy_java_web;
 -- MySQL dump 10.13  Distrib 8.0.19, for Linux (x86_64)
 --
 -- Host: localhost    Database: casestudy_java_web
 -- ------------------------------------------------------
 -- Server version	8.0.19-0ubuntu0.19.10.3
-
+DROP DATABASE IF EXISTS `casestudy_java_web`;
+CREATE DATABASE `casestudy_java_web`;
+USE `casestudy_java_web`;
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -40,16 +40,6 @@ CREATE TABLE `SPRING_SESSION` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `SPRING_SESSION`
---
-
-LOCK TABLES `SPRING_SESSION` WRITE;
-/*!40000 ALTER TABLE `SPRING_SESSION` DISABLE KEYS */;
-INSERT INTO `SPRING_SESSION` VALUES ('b084bdb4-3b65-493e-8126-5a5190c039a0','f0704471-a9a6-4896-8407-60516fc95a3b',1589509225748,1589509633275,1800,1589511433275,'admin@gmail.com');
-/*!40000 ALTER TABLE `SPRING_SESSION` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `SPRING_SESSION_ATTRIBUTES`
 --
 
@@ -66,16 +56,6 @@ CREATE TABLE `SPRING_SESSION_ATTRIBUTES` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `SPRING_SESSION_ATTRIBUTES`
---
-
-LOCK TABLES `SPRING_SESSION_ATTRIBUTES` WRITE;
-/*!40000 ALTER TABLE `SPRING_SESSION_ATTRIBUTES` DISABLE KEYS */;
-INSERT INTO `SPRING_SESSION_ATTRIBUTES` VALUES ('b084bdb4-3b65-493e-8126-5a5190c039a0','org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository.CSRF_TOKEN',_binary '¬\í\0sr\06org.springframework.security.web.csrf.DefaultCsrfTokenZ\ï·\È/¢û\Õ\0L\0\nheaderNamet\0Ljava/lang/String;L\0\rparameterNameq\0~\0L\0tokenq\0~\0xpt\0X-CSRF-TOKENt\0_csrft\0$df6e289a-3e3e-42fd-9ed9-cd5a088cdb3f'),('b084bdb4-3b65-493e-8126-5a5190c039a0','SPRING_SECURITY_CONTEXT',_binary '¬\í\0sr\0=org.springframework.security.core.context.SecurityContextImpl\0\0\0\0\0\0\0L\0authenticationt\02Lorg/springframework/security/core/Authentication;xpsr\0Oorg.springframework.security.authentication.UsernamePasswordAuthenticationToken\0\0\0\0\0\0\0L\0credentialst\0Ljava/lang/Object;L\0	principalq\0~\0xr\0Gorg.springframework.security.authentication.AbstractAuthenticationTokenÓª(~nGd\0Z\0\rauthenticatedL\0authoritiest\0Ljava/util/Collection;L\0detailsq\0~\0xpsr\0&java.util.Collections$UnmodifiableListü%1µ\ì\0L\0listt\0Ljava/util/List;xr\0,java.util.Collections$UnmodifiableCollectionB\0\Ë^÷\0L\0cq\0~\0xpsr\0java.util.ArrayListx\Ò\Ça\0I\0sizexp\0\0\0w\0\0\0sr\0Borg.springframework.security.core.authority.SimpleGrantedAuthority\0\0\0\0\0\0\0L\0rolet\0Ljava/lang/String;xpt\0\nROLE_ADMINsq\0~\0t\0ROLE_MEMBERxq\0~\0\rsr\0Horg.springframework.security.web.authentication.WebAuthenticationDetails\0\0\0\0\0\0\0L\0\rremoteAddressq\0~\0L\0	sessionIdq\0~\0xpt\00:0:0:0:0:0:0:1t\0$ea0ff6d7-838a-49e0-8c42-c47b66e9ada0psr\02org.springframework.security.core.userdetails.User\0\0\0\0\0\0\0Z\0accountNonExpiredZ\0accountNonLockedZ\0credentialsNonExpiredZ\0enabledL\0authoritiest\0Ljava/util/Set;L\0passwordq\0~\0L\0usernameq\0~\0xpsr\0%java.util.Collections$UnmodifiableSetÑU\0\0xq\0~\0\nsr\0java.util.TreeSetÝP\í[\0\0xpsr\0Forg.springframework.security.core.userdetails.User$AuthorityComparator\0\0\0\0\0\0\0\0xpw\0\0\0q\0~\0q\0~\0xpt\0admin@gmail.com');
-/*!40000 ALTER TABLE `SPRING_SESSION_ATTRIBUTES` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `contract`
 --
 
@@ -90,7 +70,7 @@ CREATE TABLE `contract` (
   `total_price` double DEFAULT NULL,
   `customer_id` varchar(255) DEFAULT NULL,
   `employee_id` bigint DEFAULT NULL,
-  `service_id` bigint DEFAULT NULL,
+  `service_id` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKq28qogy68douoc4gkgcy3ow9p` (`customer_id`),
   KEY `FKr2iw6grixlkbx43q2svdrhbb9` (`employee_id`),
@@ -100,15 +80,6 @@ CREATE TABLE `contract` (
   CONSTRAINT `FKr2iw6grixlkbx43q2svdrhbb9` FOREIGN KEY (`employee_id`) REFERENCES `employee` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `contract`
---
-
-LOCK TABLES `contract` WRITE;
-/*!40000 ALTER TABLE `contract` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contract` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `contract_detail`
@@ -129,15 +100,6 @@ CREATE TABLE `contract_detail` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `contract_detail`
---
-
-LOCK TABLES `contract_detail` WRITE;
-/*!40000 ALTER TABLE `contract_detail` DISABLE KEYS */;
-/*!40000 ALTER TABLE `contract_detail` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customer`
 --
 
@@ -148,7 +110,7 @@ CREATE TABLE `customer` (
   `customer_id` varchar(255) NOT NULL,
   `address` varchar(255) DEFAULT NULL,
   `contact_number` varchar(255) DEFAULT NULL,
-  `date_of_birth` datetime(6) NOT NULL,
+  `date_of_birth` date NOT NULL,
   `email` varchar(255) DEFAULT NULL,
   `full_name` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
@@ -161,16 +123,6 @@ CREATE TABLE `customer` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `customer`
---
-
-LOCK TABLES `customer` WRITE;
-/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES ('KH-5421','138 Há» QuÃ½ Ly','0971436700','1999-12-06 00:00:00.000000','nghuutho3@gmail.com','Nguyá»n Há»¯u Thá»','Male','197414488',1);
-/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `customer_type`
 --
 
@@ -181,18 +133,8 @@ CREATE TABLE `customer_type` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `customer_type`
---
-
-LOCK TABLES `customer_type` WRITE;
-/*!40000 ALTER TABLE `customer_type` DISABLE KEYS */;
-INSERT INTO `customer_type` VALUES (1,'Diamond'),(2,'Silver');
-/*!40000 ALTER TABLE `customer_type` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `degree`
@@ -209,15 +151,6 @@ CREATE TABLE `degree` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `degree`
---
-
-LOCK TABLES `degree` WRITE;
-/*!40000 ALTER TABLE `degree` DISABLE KEYS */;
-/*!40000 ALTER TABLE `degree` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `department`
 --
 
@@ -230,15 +163,6 @@ CREATE TABLE `department` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `department`
---
-
-LOCK TABLES `department` WRITE;
-/*!40000 ALTER TABLE `department` DISABLE KEYS */;
-/*!40000 ALTER TABLE `department` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `employee`
@@ -270,15 +194,6 @@ CREATE TABLE `employee` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `employee`
---
-
-LOCK TABLES `employee` WRITE;
-/*!40000 ALTER TABLE `employee` DISABLE KEYS */;
-/*!40000 ALTER TABLE `employee` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `position`
 --
 
@@ -293,15 +208,6 @@ CREATE TABLE `position` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `position`
---
-
-LOCK TABLES `position` WRITE;
-/*!40000 ALTER TABLE `position` DISABLE KEYS */;
-/*!40000 ALTER TABLE `position` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `rent_type`
 --
 
@@ -313,17 +219,8 @@ CREATE TABLE `rent_type` (
   `name` varchar(255) DEFAULT NULL,
   `price` double DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `rent_type`
---
-
-LOCK TABLES `rent_type` WRITE;
-/*!40000 ALTER TABLE `rent_type` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rent_type` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `role`
@@ -338,16 +235,6 @@ CREATE TABLE `role` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `role`
---
-
-LOCK TABLES `role` WRITE;
-/*!40000 ALTER TABLE `role` DISABLE KEYS */;
-INSERT INTO `role` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_MEMBER');
-/*!40000 ALTER TABLE `role` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `secondary_service`
@@ -366,15 +253,6 @@ CREATE TABLE `secondary_service` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `secondary_service`
---
-
-LOCK TABLES `secondary_service` WRITE;
-/*!40000 ALTER TABLE `secondary_service` DISABLE KEYS */;
-/*!40000 ALTER TABLE `secondary_service` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `service`
 --
 
@@ -382,11 +260,11 @@ DROP TABLE IF EXISTS `service`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `service` (
-  `service_id` bigint NOT NULL,
+  `service_id` varchar(255) NOT NULL,
   `area` float DEFAULT NULL,
   `max_number_of_people` int DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `number_od_floors` int DEFAULT NULL,
+  `number_of_floors` int DEFAULT NULL,
   `rent_fee` double DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
   `rent_type_id` bigint DEFAULT NULL,
@@ -400,15 +278,6 @@ CREATE TABLE `service` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `service`
---
-
-LOCK TABLES `service` WRITE;
-/*!40000 ALTER TABLE `service` DISABLE KEYS */;
-/*!40000 ALTER TABLE `service` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `service_type`
 --
 
@@ -419,17 +288,8 @@ CREATE TABLE `service_type` (
   `service_type_id` bigint NOT NULL AUTO_INCREMENT,
   `service_type_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`service_type_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `service_type`
---
-
-LOCK TABLES `service_type` WRITE;
-/*!40000 ALTER TABLE `service_type` DISABLE KEYS */;
-/*!40000 ALTER TABLE `service_type` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `user`
@@ -447,16 +307,6 @@ CREATE TABLE `user` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `user`
---
-
-LOCK TABLES `user` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'admin@gmail.com','$2y$12$eZZmcTgURhS5ZnOGnBqJle9Y7VrJJhsXWCEksiZbikD9.mI74Chja'),(2,'member@gmail.com','$2y$12$eZZmcTgURhS5ZnOGnBqJle9Y7VrJJhsXWCEksiZbikD9.mI74Chja');
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_role`
 --
 
@@ -472,16 +322,6 @@ CREATE TABLE `user_role` (
   CONSTRAINT `FKa68196081fvovjhkek5m97n3y` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `user_role`
---
-
-LOCK TABLES `user_role` WRITE;
-/*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (1,1),(1,2),(2,2);
-/*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
-UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -492,4 +332,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-05-15 10:11:27
+-- Dump completed on 2020-05-16 22:57:58

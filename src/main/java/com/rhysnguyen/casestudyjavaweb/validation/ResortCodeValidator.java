@@ -1,4 +1,4 @@
-package com.rhysnguyen.validation;
+package com.rhysnguyen.casestudyjavaweb.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
