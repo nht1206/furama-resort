@@ -95,8 +95,9 @@ public class CustomerController {
         return "admin/customer/edit";
     }
 
-    @PostMapping(value="/customer/edit/{id}")
+    @PostMapping(value="/customer/update")
     public String processEditCustomer(@ModelAttribute("customer") Customer customer) {
+        customerService.save(customer);
         return "redirect:/admin/customers";
     }
     
