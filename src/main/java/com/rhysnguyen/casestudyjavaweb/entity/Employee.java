@@ -13,7 +13,7 @@ import com.rhysnguyen.validation.PhoneNumber;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
