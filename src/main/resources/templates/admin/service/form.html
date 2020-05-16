@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <h2>Create service</h2>
+    <form th:fragment="service-form(action)"
+      th:action="@{/admin/service/} + ${action}"
+      method="post"
+      class="col-md-6"
+      th:object="${service}"
+    >
+      <div class="form-group">
+        <label for="serviceId">service Id</label>
+        <input
+          th:field="*{serviceId}"
+          type="text"
+          class="form-control"
+          th:classappend="${#fields.hasErrors('serviceId')} ? 'is-invalid' : ''"
+          th:readonly="${action == 'update'}"
+          id="serviceId"
+        />
+        <div
+          th:if="${#fields.hasErrors('serviceId')}"
+          th:errors="*{serviceId}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="area">Area</label>
+        <input
+          th:field="*{area}"
+          type="number"
+          class="form-control"
+          th:classappend="${#fields.hasErrors('area')} ? 'is-invalid' : ''"
+          id="area"
+        />
+        <div
+          th:if="${#fields.hasErrors('area')}"
+          th:errors="*{area}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="rentFee">Rent fee</label>
+        <input
+          th:field="*{rentFee}"
+          type="number"
+          class="form-control"
+          th:classappend="${#fields.hasErrors('rentFee')} ? 'is-invalid' : ''"
+          id="rentFee"
+        />
+        <div
+          th:if="${#fields.hasErrors('rentFee')}"
+          th:errors="*{rentFee}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="numberOfFloors">Number of floors</label>
+        <input
+          th:field="*{numberOfFloors}"
+          type="number"
+          class="form-control"
+          th:classappend="${#fields.hasErrors('numberOfFloors')} ? 'is-invalid' : ''"
+          id="numberOfFloors"
+        />
+        <div
+          th:if="${#fields.hasErrors('numberOfFloors')}"
+          th:errors="*{numberOfFloors}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="maxNumberOfPeople">Max number of people</label>
+        <input
+          th:field="*{maxNumberOfPeople}"
+          type="number"
+          class="form-control"
+          th:classappend="${#fields.hasErrors('maxNumberOfPeople')} ? 'is-invalid' : ''"
+          id="maxNumberOfPeople"
+        />
+        <div
+          th:if="${#fields.hasErrors('maxNumberOfPeople')}"
+          th:errors="*{maxNumberOfPeople}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="status">Status</label>
+        <input
+          th:field="*{status}"
+          type="text"
+          class="form-control"
+          th:classappend="${#fields.hasErrors('status')} ? 'is-invalid' : ''"
+          id="status"
+        />
+        <div
+          th:if="${#fields.hasErrors('status')}"
+          th:errors="*{status}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="serviceType">Service type</label>
+        <select
+          th:field="*{serviceType}"
+          class="custom-select"
+          th:classappend="${#fields.hasErrors('serviceType')} ? 'is-invalid' : ''"
+          id="serviceType"
+          required
+        >
+          <option
+            th:each="serviceType : ${serviceTypes}"
+            th:value="${serviceType.id}"
+            th:text="${serviceType.name}"
+          ></option>
+        </select>
+        <div
+          th:if="${#fields.hasErrors('serviceType')}"
+          th:errors="*{serviceType}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <div class="form-group">
+        <label for="rentType">Rent type</label>
+        <select
+          th:field="*{rentType}"
+          class="custom-select"
+          th:classappend="${#fields.hasErrors('rentType')} ? 'is-invalid' : ''"
+          id="rentType"
+          required
+        >
+          <option
+            th:each="rentType : ${rentTypes}"
+            th:value="${rentType.id}"
+            th:text="${rentType.name}"
+          ></option>
+        </select>
+        <div
+          th:if="${#fields.hasErrors('rentType')}"
+          th:errors="*{rentType}"
+          class="invalid-feedback"
+        ></div>
+      </div>
+      <button class="btn btn-primary" type="submit" th:text="${action == 'create'} ? 'Create' : 'Update'"></button>
+    </form>
+  </body>
+</html>
