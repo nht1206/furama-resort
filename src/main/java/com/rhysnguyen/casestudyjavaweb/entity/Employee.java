@@ -41,8 +41,8 @@ public class Employee {
     private Date dateOfBirth;
 
     @Column(name = "identity_card_number")
-    @IdentityCard(message = "{Employee.identityCardNumber.NotBlank}")
-    @NotBlank
+    @IdentityCard(message = "{Employee.identityCardNumber.Valid}")
+    @NotBlank(message = "{Employee.identityCardNumber.NotBlank}")
     private String identityCardNumber;
 
     @Column(name = "contact_number")
