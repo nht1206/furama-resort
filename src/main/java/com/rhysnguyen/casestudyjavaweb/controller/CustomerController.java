@@ -2,6 +2,7 @@ package com.rhysnguyen.casestudyjavaweb.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.rhysnguyen.casestudyjavaweb.entity.Customer;
@@ -10,8 +11,7 @@ import com.rhysnguyen.casestudyjavaweb.service.CustomerService;
 import com.rhysnguyen.casestudyjavaweb.service.CustomerTypeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -52,8 +52,26 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customers")
-    public String getListCustomer(final Model model,@PageableDefault(size = 20) Pageable pageable) {
-        model.addAttribute("customers", customerService.findAll(pageable));
+    public String getListCustomer(final Model model, HttpServletRequest request) {
+        int page = 0;
+        int size = 10;
+        
+        if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
+            if (Integer.parseInt(request.getParameter("page")) < 1) {
+                page = 0;
+            } else {
+                page = Integer.parseInt(request.getParameter("page")) - 1;
+            }
+        }
+
+        if (request.getParameter("size") != null && !request.getParameter("size").isEmpty()) {
+            if (Integer.parseInt(request.getParameter("size")) < 1) {
+                size = 1;
+            } else {
+                size = Integer.parseInt(request.getParameter("size"));
+            }
+        }
+        model.addAttribute("customers", customerService.findAll(PageRequest.of(page, size)));
         return "admin/customer/list";
     }
 

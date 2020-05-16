@@ -10,8 +10,7 @@
         th:replace="admin/fragments/side-bar.html :: side-bar(current = 'customer')"
       ></nav>
       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-        <!-- <hr> -->
-        <form th:replace="admin/fragments/customer/form.html :: customer-form(action = 'create')"></form>
+        <form th:replace="admin/customer/form.html :: customer-form(action = 'create')"></form>
       </main>
     </div>
     <th:block th:replace="admin/fragments/head.html :: js"> </th:block>

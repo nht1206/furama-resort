@@ -1,11 +1,12 @@
 package com.rhysnguyen.casestudyjavaweb.service;
 
-import java.util.List;
 
 import com.rhysnguyen.casestudyjavaweb.dao.ContractRepository;
 import com.rhysnguyen.casestudyjavaweb.entity.Contract;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,8 +21,8 @@ public class ContractServiceImpl implements ContractService {
 
 
     @Override
-    public List<Contract> findAll() {
-        return contractRepository.findAll();
+    public Page<Contract> findAll(Pageable pageable) {
+        return contractRepository.findAll(pageable);
     }
 
     @Override
