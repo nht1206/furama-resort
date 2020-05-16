@@ -20,7 +20,7 @@ public class Service {
     @Id
     @Column(name = "service_id")
     @ResortCode(regex = "^DV-[0-9]{4}$", message = "{service.id.valid}")
-    private Long serviceId;
+    private String serviceId;
     @Column(name = "name")
     private String name;
     @Column(name = "area")
@@ -29,7 +29,7 @@ public class Service {
     @Column(name = "rent_fee")
     @Min(value = 0, message = "The rent fee should be greater than 0.")
     private Double rentFee;
-    @Column(name = "number_od_floors")
+    @Column(name = "number_of_floors")
     @Min(value = 1, message = "The number of floors should be greater than 0.")
     private Integer numberOfFloors;
     @Column(name = "max_number_of_people")
