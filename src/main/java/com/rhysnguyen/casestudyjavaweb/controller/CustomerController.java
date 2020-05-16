@@ -12,8 +12,6 @@ import com.rhysnguyen.casestudyjavaweb.service.CustomerTypeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -56,7 +54,7 @@ public class CustomerController {
     @GetMapping(value = "/customers")
     public String getListCustomer(final Model model, HttpServletRequest request) {
         int page = 0;
-        int size = 15;
+        int size = 1;
         
         if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
             if (Integer.parseInt(request.getParameter("page")) < 1) {
