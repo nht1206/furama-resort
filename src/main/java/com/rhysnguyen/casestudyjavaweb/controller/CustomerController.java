@@ -92,7 +92,7 @@ public class CustomerController {
 
     @GetMapping(value = "/customer/edit/{id}")
     public String editCustomer(final Model model, @PathVariable final String id) {
-        model.addAttribute("customer", customerService.findById("KH-5421"));
+        model.addAttribute("customer", customerService.findById(id));
         return "admin/customer/edit";
     }
 
