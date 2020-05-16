@@ -42,7 +42,7 @@ public class CustomerController {
      * @param customerTypeService the customerTypeService to set
      */
     @Autowired
-    public void setCustomerTypeService(CustomerTypeService customerTypeService) {
+    public void setCustomerTypeService(final CustomerTypeService customerTypeService) {
         this.customerTypeService = customerTypeService;
     }
 
@@ -52,10 +52,10 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/customers")
-    public String getListCustomer(final Model model, HttpServletRequest request) {
+    public String getListCustomer(final Model model, final HttpServletRequest request) {
         int page = 0;
         int size = 10;
-        
+
         if (request.getParameter("page") != null && !request.getParameter("page").isEmpty()) {
             if (Integer.parseInt(request.getParameter("page")) < 1) {
                 page = 0;
@@ -82,27 +82,31 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/customer/create")
-    public String processCreateCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult result) {
+    public String processCreateCustomer(@ModelAttribute("customer") @Valid final Customer customer,
+            final BindingResult result) {
         if (result.hasFieldErrors())
             return "admin/customer/create";
         customerService.save(customer);
         return "redirect:/admin/customers";
     }
 
-    @GetMapping(value="/customer/edit/{id}")
-    public String editCustomer(Model model, @PathVariable String id) {
+    @GetMapping(value = "/customer/edit/{id}")
+    public String editCustomer(final Model model, @PathVariable final String id) {
         model.addAttribute("customer", customerService.findById("KH-5421"));
         return "admin/customer/edit";
     }
 
-    @PostMapping(value="/customer/update")
-    public String processEditCustomer(@ModelAttribute("customer") Customer customer) {
+    @PostMapping(value = "/customer/update")
+    public String processEditCustomer(@ModelAttribute("customer") @Valid final Customer customer,
+            final BindingResult result) {
+        if (result.hasFieldErrors())
+            return "admin/customer/create";
         customerService.save(customer);
         return "redirect:/admin/customers";
     }
-    
-    @GetMapping(value="/customer/delete/{id}")
-    public String deleteCustomer(@PathVariable String id) {
+
+    @GetMapping(value = "/customer/delete/{id}")
+    public String deleteCustomer(@PathVariable final String id) {
         customerService.delete(id);
         return "redirect:/admin/customers";
     }

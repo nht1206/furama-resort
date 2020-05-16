@@ -6,6 +6,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.rhysnguyen.validation.ResortCode;
 
@@ -19,23 +21,29 @@ import java.util.Set;
 public class Service {
     @Id
     @Column(name = "service_id")
-    @ResortCode(regex = "^DV-[0-9]{4}$", message = "{service.id.valid}")
+    @ResortCode(regex = "^DV-[0-9]{4}$", message = "{service.id.invalid}")
     private String serviceId;
     @Column(name = "name")
+    @NotBlank(message = "Name is required.")
     private String name;
     @Column(name = "area")
     @Min(value = 0, message = "{service.area.positive}")
+    @NotNull(message = "Area is required.")
     private Float area;
     @Column(name = "rent_fee")
     @Min(value = 0, message = "The rent fee should be greater than 0.")
+    @NotNull(message = "Rent fee is required.")
     private Double rentFee;
     @Column(name = "number_of_floors")
     @Min(value = 1, message = "The number of floors should be greater than 0.")
+    @NotNull(message = "Number of floors is required.")
     private Integer numberOfFloors;
     @Column(name = "max_number_of_people")
     @Min(value = 1, message = "The max number of people should be greater than 0.")
+    @NotNull(message = "Max number of people is required.")
     private Integer maxNumberOfPeople;
     @Column(name = "status")
+    @NotBlank(message = "Name is required.")
     private String status;
     @ManyToOne(targetEntity = ServiceType.class,
             fetch = FetchType.EAGER,
